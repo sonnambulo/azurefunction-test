@@ -23,7 +23,5 @@ steps:
 - task: serverlesSecurity@1
   inputs:
     customFlags: '-U jonathan.campbell+saemea@aquasec.com -P $(PASSWD01)'
-- task: serverlesSecurity@1
-  inputs:
     showNegligible: false
     connection: 'serverless-windows-nexus'
