@@ -22,7 +22,7 @@ steps:
     goals: 'package'
 - task: serverlesSecurity@1
   inputs:
-    customFlags: '-U jonathan.campbell+saemea@aquasec.com -P $(PASSWD)'
+    customFlags: '-U jonathan.campbell+saemea@aquasec.com -P $(PASSWD01)'
 - task: serverlesSecurity@1
   inputs:
     showNegligible: false
