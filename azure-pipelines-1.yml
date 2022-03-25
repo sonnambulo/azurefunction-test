@@ -22,6 +22,6 @@ steps:
     goals: 'package'
 - task: serverlesSecurity@1
   inputs:
-    customFlags: '-U jonathan.campbell+saemea@aquasec.com -P "$(PASSWD)" -H https://225fccbcb7.cloud.aquasec.com/'
+    customFlags: ''
     showNegligible: false
     connection: 'serverless-nexus'
