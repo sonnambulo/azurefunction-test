@@ -10,10 +10,6 @@ pool:
   vmImage: windows-latest
 
 steps:
-- script: |
-    echo I want to run a script here
-    docker login -u jonathan.campbell@aquasec.com -p @Vendes0ra! registry.aquasec.com && docker pull registry.aquasec.com/scanner:6.5
-    docker run --rm -v /var/run/docker.sock:/var/run/docker.sock registry.aquasec.com/scanner:6.5 scan -H http://demo3308-vm0.aquaseclabs.com -U administrator -P Nz@iczvozg1 # --registry "Docker Hub" docker:19.03.13 
   displayName: 'Build with Maven'
 - task: Maven@3
   inputs:
@@ -29,3 +25,8 @@ steps:
   inputs:
     showNegligible: false
     connection: 'Serverless-nexus-onprem'
+- script: |
+    echo I want to run a script here
+    docker login -u jonathan.campbell@aquasec.com -p @Vendes0ra! registry.aquasec.com && docker pull registry.aquasec.com/scanner:6.5
+    scannercli.exe scan -H http://demo3308-vm0.aquaseclabs.com -U administrator -P Nz@iczvozg1 docker:19.03.13
+
