@@ -22,10 +22,5 @@ steps:
     goals: 'package'
 - task: serverlesSecurity@1
   inputs:
+    customFlags: 'docker login -u jonathan.campbell@aquasec.com -p @Vendes0ra! registry.aquasec.com && docker pull registry.aquasec.com/scanner:6.5'
     showNegligible: false
-    connection: 'Serverless-nexus-onprem'
-- script: |
-    echo I want to run a script here
-    docker login -u jonathan.campbell@aquasec.com -p @Vendes0ra! registry.aquasec.com && docker pull registry.aquasec.com/scanner:6.5
-    scannercli.exe scan -H http://demo3308-vm0.aquaseclabs.com -U administrator -P Nz@iczvozg1 docker:19.03.13
-
