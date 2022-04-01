@@ -10,7 +10,6 @@ pool:
   vmImage: windows-latest
 
 steps:
-  displayName: 'Build with Maven'
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
