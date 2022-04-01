@@ -23,3 +23,4 @@ steps:
 - task: serverlesSecurity@1
   inputs:
     showNegligible: false
+    connection: 'Serverless-nexus-onprem'
