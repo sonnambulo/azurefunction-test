@@ -1,5 +1,6 @@
 # Maven
 
+
 trigger:
 - main
 
@@ -17,7 +18,11 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+- task: serverlesSecurity@1
+  inputs:
+    showNegligible: true
+    connection: 'Serverless-nexus-onprem'
 - task: Bash@3
   inputs:
     targetType: 'inline'
-    script: 'docker pull registry.aquasec.com/scanner:6.5 && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock registry.aquasec.com/scanner:6.5 scan -H http://20.86.242.174:8080 -U administrator -P P@ssw0rd --registry "Docker Hub" docker:19.03.13'
+    script: 'docker pull registry.aquasec.com/scanner:6.5 && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock registry.aquasec.com/scanner:6.5 scan -H http://20.86.242.174:8080 -U administrator -P P@ssw0rd'
