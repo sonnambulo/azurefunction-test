@@ -9,6 +9,7 @@ pool:
 
 steps:
 - task: Maven@3
+
   inputs:
     mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
@@ -21,8 +22,5 @@ steps:
 - task: serverlesSecurity@1
   inputs:
     showNegligible: true
+    windowsScannerVersion: '6.5.0'
     connection: 'Serverless-nexus-onprem'
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: 'docker login -u jonathan.campbell@aquasec.com -p @Vendes0ra! registry.aquasec.com && docker pull registry.aquasec.com/scanner:6.5 && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock registry.aquasec.com/scanner:6.5 scan -H http://20.86.242.174:8080 -U administrator -P P@ssw0rd'
