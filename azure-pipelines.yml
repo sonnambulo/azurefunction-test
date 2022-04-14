@@ -20,24 +20,9 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-- task: serverlesSecurity@1
-  inputs:
-    showNegligible: true
-    windowsScannerVersion: '6.5.0'
-    connection: 'Serverless-nexus-onprem'
-- task: aquasecScanner@4
-  inputs:
-    image: '$(Build.SourcesDirectory)'
-    scanType: 'local'
-    register: false
-    hideBase: false
-    showNegligible: true
-    windowsScannerVersion: '6.5.0'
 - task: Bash@3
   inputs:
     targetType: 'inline'
-    script: |
-      # Write your commands here
-      
+    script:       
       docker login -u jonathan.campbell@aquasec.com -p @Vendes0ra! registry.aquasec.com && docker pull registry.aquasec.com/scanner:6.5 && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock registry.aquasec.com/scanner:6.5 scan -H http://20.86.242.174:8080 -U administrator -P P@ssw0rd
     connection: 'Serverless-nexus-onprem'
