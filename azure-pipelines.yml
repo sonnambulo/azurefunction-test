@@ -6,7 +6,7 @@ trigger:
 - main
 
 pool:
-  vmImage: windows-latest
+  vmImage: ubuntu-latest
 
 steps:
 - task: Maven@3
@@ -24,5 +24,5 @@ steps:
   inputs:
     targetType: 'inline'
     script:       
-      docker login -u jonathan.campbell@aquasec.com -p @Vendes0ra! registry.aquasec.com && docker pull registry.aquasec.com/scannercli_windows.exe && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock registry.aquasec.com/scannercli_windows.exe scan -H http://20.86.242.174:8080 -U administrator -P P@ssw0rd
+      docker login -u jonathan.campbell@aquasec.com -p @Vendes0ra! registry.aquasec.com && docker pull registry.aquasec.com/scanner:6.5 && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock registry.aquasec.com/scanner:6.5 scan -H http://20.86.242.174:8080 -U administrator -P P@ssw0rd
     connection: 'Serverless-nexus-onprem'
