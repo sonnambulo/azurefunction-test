@@ -14,5 +14,5 @@ steps:
   inputs:
     targetType: 'inline'
     script:       
-      docker login -u jonathan.campbell@aquasec.com -p @Vendes0ra! registry.aquasec.com && docker pull registry.aquasec.com/scanner:6.5 && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock registry.aquasec.com/scanner:6.5 scan -H http://20.86.242.174:8080 -U administrator -P P@ssw0rd --registry "Docker Hub" docker:19.03.13
+      docker login -u jonathan.campbell@aquasec.com -p @Vendes0ra! registry.aquasec.com && docker pull registry.aquasec.com/scanner:6.5 && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock registry.aquasec.com/scanner:6.5 scan -H http://20.126.162.38:8080 -U administrator -P P@ssw0rd --registry "Docker Hub" docker:19.03.13
     connection: 'Serverless-nexus-onprem'
