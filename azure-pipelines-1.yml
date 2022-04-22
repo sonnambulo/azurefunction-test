@@ -22,5 +22,5 @@ steps:
     goals: 'package'
 - task: serverlesSecurity@1
   inputs:
-    showNegligible: false
+    showNegligible: true
     connection: 'Serverless-nexus-onprem'
