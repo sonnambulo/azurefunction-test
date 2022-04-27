@@ -20,5 +20,5 @@ steps:
     hideBase: false
     showNegligible: false
     windowsScannerVersion: '6.5.0'
-    connection: 'Serverless-on-prem'
+    connection: 'Serverless-nexus-onprem'
     customFlags: '--code-scan $(Build.SourcesDirectory) '
