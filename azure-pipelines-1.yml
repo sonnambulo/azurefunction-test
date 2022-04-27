@@ -1,14 +1,7 @@
-# Maven
-# Build your Java project and run tests with Apache Maven.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
-
 trigger:
 - main
-
 pool:
   vmImage: windows-latest
-
 steps:
 - task: Maven@3
   inputs:
@@ -20,7 +13,12 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-- task: serverlesSecurity@1
+- task: aquasecScanner@4
   inputs:
-    showNegligible: true
-    connection: 'Serverless-nexus-onprem'
+    scanType: 'local'
+    register: false
+    hideBase: false
+    showNegligible: false
+    windowsScannerVersion: '6.5.0'
+    connection: 'Serverless-on-prem'
+    customFlags: '--code-scan $(Build.SourcesDirectory) '
