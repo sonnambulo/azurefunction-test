@@ -23,5 +23,5 @@ steps:
   inputs:
     targetType: 'inline'
     script:       
-      docker login -u jonathan.campbell@aquasec.com -p @Vendes0ra! registry.aquasec.com && docker pull registry.aquasec.com/scanner:6.5 && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock registry.aquasec.com/scanner:6.5 scan -H http://20.126.162.38:8080 -U administrator -P P@ssw0rd '--code-scan $(Build.SourcesDirectory) '
+      docker login -u jonathan.campbell@aquasec.com -p @Vendes0ra! registry.aquasec.com && docker pull registry.aquasec.com/scanner:6.5 && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock registry.aquasec.com/scanner:6.5 scan -H http://20.126.162.38:8080 -U administrator -P P@ssw0rd '/home/vsts/work/1/s/target/azure-functions/''
     connection: 'Serverless-nexus-onprem'
