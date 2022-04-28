@@ -14,7 +14,7 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 - task: serverlesSecurity@1
-    inputs:
+  inputs:
     customFlags: '--code-scan $(Build.SourcesDirectory)'
     showNegligible: false
     connection: 'Serverless-nexus-onprem'
