@@ -13,12 +13,9 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-- task: aquasecScanner@4
-  inputs:
-    scanType: 'local'
-    register: false
-    hideBase: false
-    showNegligible: true
-    windowsScannerVersion: '6.5.0'
+- task: serverlesSecurity@1
+    inputs:
+    customFlags: '--code-scan $(Build.SourcesDirectory)'
+    showNegligible: false
     connection: 'Serverless-nexus-onprem'
-    customFlags: '--code-scan $(Build.SourcesDirectory) '
+    
