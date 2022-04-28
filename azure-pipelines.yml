@@ -17,7 +17,7 @@ steps:
   displayName: Login to aqua reg
   inputs:
     command: login
-    containerRegistry: aqua-reg
+    containerRegistry: 'registry.aquasec.com'
 - script: |
     mkdir $(Build.SourcesDirectory)/reports
     docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /home/vsts/work/1/s:/code -v $(Build.SourcesDirectory)/reports:/reports registry.aquasec.com/scanner:6.5 scan --user $(USER) --password $(PASSWORD) --host $(HOST) --code-scan /code --jsonfile /reports/out.json --htmlfile /reports/out.html
