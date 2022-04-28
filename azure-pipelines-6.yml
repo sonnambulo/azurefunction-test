@@ -28,7 +28,7 @@ steps:
     view: '51c73606-a9df-4c68-b5d5-6b1858d56e99'
     definition: '1d2221c5-520f-4aa3-a95c-81cf5aad33d8'
     version: '0.0.1'
-    downloadPath: '$(System.ArtifactsDirectory)'
+    downloadPath: 'D:\a\_tasks\serverlesSecurity_53872c9a-a53f-4fcf-973d-8ded3d75432d\1.0.25\windows\'
 - task: serverlesSecurity@1
   continueOnError: true
   inputs:
