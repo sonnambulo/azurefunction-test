@@ -18,7 +18,7 @@ steps:
     scanType: 'local'
     register: false
     hideBase: false
-    showNegligible: false
+    showNegligible: true
     windowsScannerVersion: '6.5.0'
     connection: 'Serverless-nexus-onprem'
     customFlags: '--code-scan $(Build.SourcesDirectory) '
