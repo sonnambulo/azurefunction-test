@@ -1,0 +1,36 @@
+# Maven
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger:
+- main
+
+pool:
+  vmImage: windows-latest
+
+steps:
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.8'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    goals: 'package'
+- task: DownloadPackage@1
+  continueOnError: true
+  inputs:
+    packageType: 'upack'
+    feed: '2e5f5b3a-d8a0-439f-ae6b-3163ff8b8b2f/9eb5fc4f-dd2b-430a-9928-1e19dcebfc6f'
+    view: '51c73606-a9df-4c68-b5d5-6b1858d56e99'
+    definition: '1d2221c5-520f-4aa3-a95c-81cf5aad33d8'
+    version: '0.0.1'
+    downloadPath: '$(System.ArtifactsDirectory)'
+- task: serverlesSecurity@1
+  continueOnError: true
+  inputs:
+    showNegligible: true
+    connection: 'Serverless-nexus-onprem'
